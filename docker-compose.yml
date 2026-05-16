@@ -1,0 +1,6 @@
+services:
+  app:
+    build: .
+    container_name: hello-world-app
+    ports:
+      - "38765:38765"
