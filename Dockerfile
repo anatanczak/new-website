@@ -12,9 +12,9 @@ RUN npm run build
 FROM node:20-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
-ENV PORT=38765
+ENV PORT=3000
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/node_modules ./node_modules
-EXPOSE 38765
-CMD ["npm", "run", "start", "--", "-p", "38765"]
+EXPOSE 3000
+CMD ["npm", "run", "start", "--", "-p", "3000"]

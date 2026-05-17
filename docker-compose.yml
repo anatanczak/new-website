@@ -1,6 +1,16 @@
 services:
   app:
     build: .
-    container_name: hello-world-app
+    container_name: anastasia-website-app
+    expose:
+      - "3000"
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: anastasia-website-web
+    depends_on:
+      - app
     ports:
-      - "38765:38765"
+      - "${HOST_PORT}:80"
+    volumes:
+      - ./nginx/${NGINX_CONF}:/etc/nginx/conf.d/default.conf:ro
