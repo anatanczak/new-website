@@ -15,12 +15,16 @@ services:
   app:
     build: .
     container_name: anastasia-website-app
+    profiles:
+      - runtime
     expose:
       - "3000"
 
   nginx:
     image: nginx:1.27-alpine
     container_name: anastasia-website-web
+    profiles:
+      - runtime
     depends_on:
       - app
     ports:
@@ -34,6 +38,8 @@ services:
   certbot:
     image: certbot/certbot:latest
     container_name: anastasia-website-certbot
+    profiles:
+      - certbot
     volumes:
       - ${LETSENCRYPT_DIR}:/etc/letsencrypt
       - ${ACME_WEBROOT}:/var/www/certbot
