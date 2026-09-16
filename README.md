@@ -27,7 +27,7 @@ Examples:
 Fast local development with hot reload:
 
 ```bash
-docker compose --env-file .env.dev --profile dev up
+docker compose --env-file .env.dev up dev
 ```
 
 Open:
@@ -102,5 +102,6 @@ Used for:
 - use `docker compose`
 - do not use `docker-compose`
 - local hot reload runs on port `3001`
+- run `docker compose --env-file .env.dev up dev` while editing styles or pages to see local changes directly
 - local preview runs on port `8086`
 - production serves on port `80`

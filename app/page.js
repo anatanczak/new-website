@@ -7,7 +7,7 @@ export default function Page() {
       style={{
         minHeight: "100vh",
         padding: "3rem",
-        background: `linear-gradient(135deg, hsl(${hue} 80% 92%), hsl(${accentHue} 85% 84%))`,
+        background: "yellow",
         color: `hsl(${hue} 60% 18%)`
       }}
     >
