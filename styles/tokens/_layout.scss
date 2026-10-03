@@ -1,0 +1,34 @@
+@use './breakpoints' as screen;
+
+@mixin layout {
+  --radius-button: 8px;
+  --radius-progress: 2px;
+  --radius-highlight: 3px;
+  --size-nav: 50px;
+  --size-logo: 40px;
+  --size-social-icon: 20px;
+  --size-social-icon-mobile: 25px;
+  --size-contact-icon: 30px;
+  --size-link-arrow: 16px;
+  --size-service-icon: 50px;
+  --size-hobby-icon: 90px;
+  --size-language-bar: 7px;
+  --size-skill-base: 80px;
+  --size-skill-step: 5px;
+  --scale-skill: 0.5;
+  --layer-navigation: 4;
+  --layer-menu: 6;
+  --layer-contact: 10;
+
+  @include screen.tablet {
+    --size-service-icon: 60px;
+    --size-hobby-icon: 110px;
+    --size-language-bar: 8px;
+    --scale-skill: 1;
+  }
+
+  @include screen.desktop {
+    --size-service-icon: 90px;
+    --size-language-bar: 9px;
+  }
+}

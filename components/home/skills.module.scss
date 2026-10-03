@@ -1,0 +1,160 @@
+@use '../../styles/tokens' as screen;
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--color-surface);
+}
+.left {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1em 0.2em 0.3em 1em;
+  > div:nth-child(1) { margin-bottom: 6%; }
+  > div:nth-child(2) { margin-top: 7%; }
+  > div:nth-child(3) { margin-bottom: 7%; }
+  > div:nth-child(4) { margin-right: 3%; margin-bottom: 2%; }
+}
+.center { display: flex; flex-direction: row; justify-content: space-between; }
+.upper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-width: 25%;
+  > div:nth-child(1) { align-self: flex-end; }
+  > div:nth-child(2) { margin-top: 10%; }
+  > div:nth-child(3) { align-self: flex-end; }
+}
+.computer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: url('/images/home/imac_background_mobile.webp') center / contain no-repeat;
+  padding: 1em;
+  min-width: 50%;
+  min-height: 160px;
+  h2 {
+    margin: var(--space-6) 1em 25%;
+    color: var(--color-text-inverse);
+    font: var(--font-h2);
+    text-align: center;
+  }
+}
+.lower {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-self: stretch;
+  min-width: 25%;
+  > div:nth-child(1) { margin-left: 4%; }
+  > div:nth-child(2) { align-self: flex-end; margin-bottom: 3%; margin-right: 4%; }
+}
+.right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  > div:nth-child(1) { margin-top: 4%; }
+  > div:nth-child(2) { margin-top: 6%; margin-left: 5%; }
+  > div:nth-child(3) { margin-bottom: 20%; margin-left: 5%; }
+  > div:nth-child(4) { margin-top: 7%; margin-right: 2%; }
+}
+.bubbleSlot { padding: 0.1em; }
+.bubble {
+  --bubble-size: calc((var(--size-skill-base) + var(--bubble-ratio) * var(--size-skill-step)) * var(--scale-skill));
+  --reveal-delay: calc(var(--bubble-index) * var(--delay-bubble-reveal-step));
+  display: flex;
+  width: var(--bubble-size);
+  height: var(--bubble-size);
+}
+.ball {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  animation: bubble var(--duration-bubble-cycle) ease-out infinite;
+  animation-delay: calc(var(--bubble-index) * var(--delay-bubble-step));
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--color-text-inverse);
+    font: var(--font-skill);
+  }
+}
+.bubble[data-category='mobile'] .ball { background: var(--color-skill-mobile); }
+.bubble[data-category='front'] .ball { background: var(--color-skill-front); }
+.bubble[data-category='back'] .ball { background: var(--color-skill-back); }
+.bubble[data-category='design'] .ball {
+  background: var(--color-skill-design);
+  p { color: var(--color-text); }
+}
+
+@include screen.tablet {
+  .skills { flex-direction: row; padding: 2.5em 1em; }
+  .left {
+    flex-direction: column;
+    min-width: 30%;
+    padding: 0;
+    > div:nth-child(1) { align-self: flex-end; margin-top: 30%; margin-bottom: 0; }
+    > div:nth-child(2) { align-self: center; margin: 0 0 10% 7%; }
+    > div:nth-child(3) { align-self: flex-end; margin-bottom: 15%; }
+    > div:nth-child(4) { margin-bottom: 15%; margin-right: 10%; }
+  }
+  .center { flex-direction: column; min-width: 40%; }
+  .upper {
+    flex-direction: row;
+    min-width: auto;
+    > div:nth-child(1) { width: 50%; align-self: auto; }
+    > div:nth-child(2) { margin-left: 15%; margin-top: 0; }
+    > div:nth-child(3) { margin-left: 30%; margin-bottom: 5%; align-self: auto; }
+  }
+  .computer {
+    padding: 0;
+    min-width: auto;
+    min-height: 300px;
+    h2 { margin-top: 100px; }
+  }
+  .lower {
+    flex-direction: row;
+    min-width: auto;
+    > div:nth-child(1) { margin-top: 10%; margin-left: 5%; }
+    > div:nth-child(2) { align-self: auto; margin: 3% 15% 0 0; }
+  }
+  .right {
+    flex-direction: column;
+    min-width: 30%;
+    > div:nth-child(1) { margin-top: 12%; margin-left: 20%; }
+    > div:nth-child(2) { margin-top: 1%; margin-left: 0; }
+    > div:nth-child(3) { margin-left: 20%; margin-top: 10%; margin-bottom: 0; }
+    > div:nth-child(4) { margin-top: 20%; margin-bottom: 10%; margin-right: 0; }
+  }
+}
+
+@include screen.desktop {
+  .left, .right { min-width: 25%; }
+  .center { min-width: 35%; }
+  .computer {
+    background-image: url('/images/home/imac_background_desktop.webp');
+    min-width: 400px;
+    min-height: 384px;
+    h2 { margin-top: 120px; }
+  }
+}
+
+@keyframes bubble {
+  0% { transform: scale(1); }
+  1.026% { transform: scaleY(0.95) scaleX(1.05); }
+  2.4624% { transform: scaleY(1.1) scaleX(0.9); }
+  3.4884% { transform: scaleY(0.98) scaleX(1.02); }
+  4.104% { transform: scaleY(1.02) scaleX(0.98); }
+  4.9761%, 5.13%, 100% { transform: scale(1); }
+}
+
+@include screen.reduced-motion {
+  .ball { animation: none; }
+}

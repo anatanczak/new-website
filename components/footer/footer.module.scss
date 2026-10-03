@@ -1,0 +1,66 @@
+@use '../../styles/tokens' as screen;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  background: var(--color-surface-inverse);
+  color: var(--color-text-inverse);
+  scroll-margin-top: var(--size-nav);
+
+  h2 {
+    margin: 0.7em;
+    padding-top: 0.2em;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    font: var(--font-footer-title);
+  }
+  a { color: inherit; text-decoration: none; }
+}
+.policy, .contact, .social {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.policy { order: 2; font: var(--font-footer-body); }
+.contact {
+  h2 { margin: 0.5em; padding: 0; }
+}
+.contactItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  a { margin: 0.5em; font: var(--font-footer-body); }
+}
+.socialLinks {
+  a { display: inline-block; margin: 0.4em; padding-top: 0.2em; }
+}
+
+@include screen.tablet {
+  .footer { flex-direction: row; justify-content: space-around; padding-inline: var(--space-9); }
+  .policy {
+    order: 0;
+    align-items: flex-start;
+    margin-top: 0.7em;
+  }
+  .contact {
+    align-items: flex-start;
+    h2 { margin: 0.7em 0.7em 0.7em 0; padding-top: 0.2em; }
+  }
+  .social {
+    align-items: flex-start;
+    h2 { margin-left: 0; }
+  }
+  .socialLinks a { margin-left: 0; }
+}
+
+@include screen.footer-wide {
+  .policy, .contact, .social { flex-direction: row; align-items: center; }
+  .policy {
+    margin-top: 0;
+    p { margin: 0.5em; }
+  }
+  .contact h2, .social h2 { margin: 0.7em; }
+  .socialLinks a { margin-left: 0.4em; }
+}

@@ -1,0 +1,25 @@
+@use './tokens' as tokens;
+
+:root {
+  @include tokens.colors;
+  @include tokens.typography;
+  @include tokens.spacing;
+  @include tokens.layout;
+  @include tokens.motion;
+}
+
+:where(body:has([data-home-page])) {
+  margin: 0;
+  font-family: var(--font-body-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &, *, *::before, *::after { box-sizing: border-box; }
+
+  p, h1, h2, h3, h4, h5 { margin: 0; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--color-action);
+    outline-offset: 4px;
+  }
+}

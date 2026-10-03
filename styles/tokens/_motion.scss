@@ -1,0 +1,14 @@
+@mixin motion {
+  --duration-menu: 500ms;
+  --duration-hamburger: 600ms;
+  --duration-menu-social: 700ms;
+  --duration-bubble-reveal: 1s;
+  --duration-language-reveal: 1.5s;
+  --duration-bubble-cycle: 39s;
+  --delay-menu-item: 500ms;
+  --delay-menu-social: 2s;
+  --delay-bubble-step: 3s;
+  --delay-bubble-reveal-step: 0.06s;
+  --ease-interface: ease-in-out;
+  --ease-hamburger: cubic-bezier(0.4, 0, 0.2, 1);
+}

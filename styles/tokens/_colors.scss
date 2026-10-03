@@ -1,0 +1,21 @@
+@mixin colors {
+  --color-navy: #122744;
+  --color-lilac: #c7a9c3;
+  --color-mint: #a3d0cb;
+  --color-white: #fbfafa;
+  --color-grey: #f3f2f2;
+  --color-text: var(--color-navy);
+  --color-text-inverse: var(--color-white);
+  --color-surface: var(--color-white);
+  --color-surface-muted: var(--color-grey);
+  --color-surface-inverse: var(--color-navy);
+  --color-accent: var(--color-lilac);
+  --color-action: var(--color-mint);
+  --color-action-hover: var(--color-lilac);
+  --color-contact-surface: rgb(197 237 233 / 30%);
+  --color-language-track: rgb(18 39 68 / 50%);
+  --color-skill-mobile: var(--color-mint);
+  --color-skill-front: var(--color-lilac);
+  --color-skill-back: var(--color-navy);
+  --color-skill-design: var(--color-grey);
+}

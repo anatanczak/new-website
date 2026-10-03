@@ -1,0 +1,18 @@
+@use '../../styles/tokens' as screen;
+
+.group[data-motion-ready='true'] {
+  [data-reveal] {
+    transform-origin: var(--reveal-origin, center);
+    transition: transform var(--reveal-duration, var(--duration-bubble-reveal)) var(--ease-interface)
+      var(--reveal-delay, 0s);
+  }
+  [data-reveal]:not([data-visible='true']) { transform: var(--reveal-hidden, scale(0)); }
+  [data-reveal][data-visible='true'] { transform: scale(1); }
+}
+
+@include screen.reduced-motion {
+  .group[data-motion-ready='true'] [data-reveal] {
+    transform: none;
+    transition: none;
+  }
+}

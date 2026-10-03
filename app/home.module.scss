@@ -1,0 +1,234 @@
+@use '../styles/tokens' as screen;
+
+:export { desktopBreakpoint: screen.$desktop; }
+
+.home { color: var(--color-text); }
+.sectionTitle {
+  color: var(--color-text);
+  text-align: center;
+  margin: var(--space-6);
+  font: var(--font-h2);
+}
+
+.hero {
+  height: 100vh;
+  padding-top: var(--size-nav);
+  background-color: var(--color-surface-inverse);
+  background-image: url('/images/home/home_background_mobile.webp');
+  background-repeat: no-repeat;
+  background-position: left 0 bottom calc(-1 * var(--size-nav));
+  background-size: contain;
+}
+.introduction {
+  margin: 5vh var(--space-3) 0;
+  h1 { color: var(--color-text-inverse); font: var(--font-h1); white-space: pre-line; }
+}
+.pitch {
+  margin-block: var(--space-3);
+  color: var(--color-text-inverse);
+  font: var(--font-pitch);
+}
+.actions { display: flex; }
+.button {
+  background: var(--color-action);
+  color: var(--color-text);
+  padding: 0.4em 1em;
+  border-radius: var(--radius-button);
+  font: var(--font-button);
+  text-decoration: none;
+  margin-right: var(--space-2);
+  &:hover, &:active, &:focus-visible { background: var(--color-action-hover); }
+}
+
+.services {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface-muted);
+  padding-bottom: var(--space-6);
+}
+.serviceList { display: flex; flex-direction: column; }
+.service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1em;
+  h3 {
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--color-accent);
+    font: var(--font-h3);
+    margin: 0.5em;
+  }
+  > p {
+    margin: 0.5em;
+    width: 80%;
+    text-align: center;
+    color: var(--color-text);
+    font: var(--font-body);
+  }
+}
+.serviceIcon { width: auto; height: var(--size-service-icon); margin: 0.5em; }
+.projectLink {
+  display: flex;
+  align-items: center;
+  color: var(--color-text);
+  text-decoration: none;
+}
+.linkHighlight {
+  margin-right: 0.1em;
+  > span { position: relative; z-index: 1; display: block; margin: 0.2em; font: var(--font-body); }
+}
+.arrowCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--color-accent);
+  width: var(--size-link-arrow);
+  height: var(--size-link-arrow);
+  border-radius: 50%;
+  img { width: 50%; margin-left: 0.1em; }
+}
+
+.biography {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+}
+.biographyContent { display: flex; flex-direction: column; margin-top: 1em; }
+.portrait {
+  display: block;
+  max-width: 100%;
+  img { display: block; max-width: 100%; height: auto; }
+}
+.biographyText {
+  margin: 0;
+  padding: 1em;
+  color: var(--color-text-inverse);
+  background: var(--color-surface-inverse);
+  p { padding: 0.3em 1.5em; font: var(--font-body); }
+}
+
+.hobbies {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface-muted);
+  padding-bottom: var(--space-6);
+}
+.hobbyList { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; }
+.hobby {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  padding: 1em;
+  img { width: var(--size-hobby-icon); height: auto; }
+  h3 { color: var(--color-accent); font: var(--font-hobby); text-transform: uppercase; }
+}
+
+.mailShortcut {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: var(--layer-contact);
+  bottom: var(--space-3);
+  right: var(--space-3);
+  padding: var(--space-2);
+  border-radius: var(--radius-button);
+  background: var(--color-contact-surface);
+  img { width: var(--size-contact-icon); height: auto; }
+}
+
+@include screen.tall-mobile {
+  .hero { padding-top: 13vh; }
+  .introduction { margin-inline: var(--space-5); }
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    text-align: center;
+    margin-bottom: var(--space-2);
+    min-height: var(--space-5);
+  }
+}
+
+@include screen.tablet {
+  .home { margin-left: var(--size-nav); }
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-top: 0;
+    background-image: url('/images/home/home_background_tablet.webp');
+    background-position: left bottom;
+  }
+  .introduction {
+    width: 48%;
+    margin: 0 var(--space-3) var(--space-5) 0;
+    h1 { margin-bottom: var(--space-4); }
+  }
+  .pitch { margin-bottom: var(--space-4); }
+  .serviceList { flex-direction: row; align-items: flex-start; }
+  .service { width: 33%; }
+  .linkHighlight {
+    position: relative;
+    padding: 0.1em 0.3em;
+    &::after {
+      content: '';
+      position: absolute;
+      border-radius: var(--radius-highlight);
+      height: 40%;
+      top: 50%;
+      left: 0;
+      right: 0;
+      background: var(--color-accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--duration-menu) var(--ease-interface);
+    }
+  }
+  .projectLink:hover .linkHighlight::after, .projectLink:focus-visible .linkHighlight::after {
+    transform: scaleX(1);
+  }
+  .biography { padding-bottom: var(--space-7); }
+  .hobby { width: auto; }
+  .mailShortcut { top: var(--space-5); right: var(--space-5); bottom: auto; }
+}
+
+@include screen.tablet-portrait {
+  .hero { height: 50vh; }
+  .introduction { width: 50%; }
+}
+
+@include screen.desktop {
+  .hero { background-image: url('/images/home/home_background_desktop.webp'); padding: 0; }
+  .introduction { margin-right: var(--space-8); margin-bottom: 16vh; }
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 35px;
+    margin-right: var(--space-3);
+  }
+  .biographyContent { flex-direction: row; justify-content: center; align-items: center; }
+  .portrait { max-width: 40%; }
+  .biographyText { max-width: 50%; }
+}
+
+@include screen.desktop-portrait {
+  .introduction { margin-bottom: 10vh; }
+  .biographyContent { align-items: flex-start; }
+}
+
+@include screen.reduced-motion {
+  .linkHighlight::after { transition: none; }
+}

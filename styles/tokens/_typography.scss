@@ -1,0 +1,43 @@
+@use './breakpoints' as screen;
+
+@mixin typography {
+  --font-heading-family: 'Comfortaa', sans-serif;
+  --font-body-family: 'Open Sans', sans-serif;
+  --font-menu: 700 16px var(--font-heading-family);
+  --font-hobby: 400 14px var(--font-heading-family);
+  --font-footer-title: 400 16px var(--font-heading-family);
+  --font-h1: 700 24px var(--font-heading-family);
+  --font-h2: 700 18px var(--font-heading-family);
+  --font-h3: 400 14px var(--font-heading-family);
+  --font-body: 400 12px var(--font-body-family);
+  --font-pitch: 300 20px var(--font-body-family);
+  --font-button: 400 12px var(--font-heading-family);
+  --font-skill: 700 12px var(--font-heading-family);
+  --font-language: 700 16px var(--font-heading-family);
+  --font-footer-body: 400 12px var(--font-body-family);
+
+  @include screen.tablet {
+    --font-h1: 700 30px var(--font-heading-family);
+    --font-h2: 700 24px var(--font-heading-family);
+    --font-h3: 400 16px var(--font-heading-family);
+    --font-body: 400 14px var(--font-body-family);
+    --font-pitch: 300 24px var(--font-body-family);
+    --font-button: 400 16px var(--font-heading-family);
+    --font-skill: 700 16px var(--font-heading-family);
+    --font-language: 700 18px var(--font-heading-family);
+    --font-footer-body: 400 14px var(--font-body-family);
+  }
+
+  @include screen.desktop {
+    --font-h1: 700 48px var(--font-heading-family);
+    --font-h2: 700 36px var(--font-heading-family);
+    --font-h3: 400 20px var(--font-heading-family);
+    --font-body: 400 16px var(--font-body-family);
+    --font-pitch: 300 30px var(--font-body-family);
+    --font-language: 700 20px var(--font-heading-family);
+  }
+
+  @include screen.footer-wide {
+    --font-footer-body: 400 16px var(--font-body-family);
+  }
+}

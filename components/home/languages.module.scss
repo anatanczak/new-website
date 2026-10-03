@@ -1,0 +1,46 @@
+@use '../../styles/tokens' as screen;
+
+.languages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--color-surface-muted);
+  padding-bottom: var(--space-6);
+  h2 {
+    color: var(--color-text);
+    font: var(--font-h2);
+    text-align: center;
+    margin: var(--space-6);
+  }
+}
+
+.list { display: flex; flex-wrap: wrap; justify-content: center; }
+.language {
+  width: 90%;
+  padding: 1em;
+  p { color: var(--color-text); font: var(--font-language); }
+}
+.track {
+  width: 100%;
+  margin-top: 0.8em;
+  background: var(--color-language-track);
+  border-radius: var(--radius-progress);
+}
+.level {
+  --reveal-hidden: scaleX(0);
+  --reveal-origin: left;
+  --reveal-duration: var(--duration-language-reveal);
+  width: var(--level);
+  height: var(--size-language-bar);
+  background: var(--color-surface-inverse);
+  border-radius: var(--radius-progress);
+}
+
+@include screen.tablet {
+  .list { justify-content: normal; }
+  .language { width: 50%; }
+}
+@include screen.desktop {
+  .list { width: 70%; }
+  .language { width: 33%; }
+}
