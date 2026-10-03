@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import SkillsSection from '../components/home/SkillsSection';
 import LanguagesSection from '../components/home/LanguagesSection';
+import BiographySection from '../components/biography/BiographySection';
 import Footer from '../components/footer/Footer';
 import content from '../components/home/content.fr.json';
 import styles from './home.module.scss';
@@ -74,23 +75,7 @@ export default function Page() {
         <SkillsSection title={content['home.skills.title']} />
         <LanguagesSection />
 
-        <section className={styles.biography} aria-labelledby="biography-title">
-          <h2 id="biography-title" className={styles.sectionTitle}>{content['home.bio.title']}</h2>
-          <div className={styles.biographyContent}>
-            <picture className={styles.portrait}>
-              <source
-                media={`(min-width: ${styles.desktopBreakpoint})`}
-                srcSet="/images/home/portrait_bio_desktop.webp"
-              />
-              <img src="/images/home/portrait_bio_mobile.webp" alt="Portrait d’Anastasia Tanczak" loading="lazy" />
-            </picture>
-            <div className={styles.biographyText}>
-              {content['home.bio.text'].split('\n').filter(paragraph => paragraph.trim()).map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </div>
-          </div>
-        </section>
+        <BiographySection />
 
         <section className={styles.hobbies} aria-labelledby="hobbies-title">
           <h2 id="hobbies-title" className={styles.sectionTitle}>{content['home.hobbies.title']}</h2>

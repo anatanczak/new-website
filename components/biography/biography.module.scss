@@ -1,0 +1,44 @@
+@use '../../styles/tokens' as screen;
+
+:export { desktopBreakpoint: screen.$desktop; }
+
+.biography {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+}
+.title {
+  color: var(--color-text);
+  text-align: center;
+  margin: var(--space-6);
+  font: var(--font-h2);
+}
+.content { display: flex; flex-direction: column; margin-top: 1em; }
+.portrait {
+  display: block;
+  max-width: 100%;
+  img { display: block; max-width: 100%; height: auto; }
+}
+.text {
+  margin: 0;
+  padding: 1em;
+  color: var(--color-text-inverse);
+  background: var(--color-surface-inverse);
+  p { padding: 0.3em 1.5em; font: var(--font-body); }
+}
+
+@include screen.tablet {
+  .biography { padding-bottom: var(--space-7); }
+}
+
+@include screen.desktop {
+  .content { flex-direction: row; justify-content: center; align-items: center; }
+  .portrait { max-width: 40%; }
+  .text { max-width: 50%; }
+}
+
+@include screen.desktop-portrait {
+  .content { align-items: flex-start; }
+}

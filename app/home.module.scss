@@ -1,7 +1,5 @@
 @use '../styles/tokens' as screen;
 
-:export { desktopBreakpoint: screen.$desktop; }
-
 .home { color: var(--color-text); }
 .sectionTitle {
   color: var(--color-text);
@@ -91,27 +89,6 @@
   img { width: 50%; margin-left: 0.1em; }
 }
 
-.biography {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-surface);
-}
-.biographyContent { display: flex; flex-direction: column; margin-top: 1em; }
-.portrait {
-  display: block;
-  max-width: 100%;
-  img { display: block; max-width: 100%; height: auto; }
-}
-.biographyText {
-  margin: 0;
-  padding: 1em;
-  color: var(--color-text-inverse);
-  background: var(--color-surface-inverse);
-  p { padding: 0.3em 1.5em; font: var(--font-body); }
-}
-
 .hobbies {
   display: flex;
   flex-direction: column;
@@ -199,7 +176,6 @@
   .projectLink:hover .linkHighlight::after, .projectLink:focus-visible .linkHighlight::after {
     transform: scaleX(1);
   }
-  .biography { padding-bottom: var(--space-7); }
   .hobby { width: auto; }
   .mailShortcut { top: var(--space-5); right: var(--space-5); bottom: auto; }
 }
@@ -219,14 +195,10 @@
     min-height: 35px;
     margin-right: var(--space-3);
   }
-  .biographyContent { flex-direction: row; justify-content: center; align-items: center; }
-  .portrait { max-width: 40%; }
-  .biographyText { max-width: 50%; }
 }
 
 @include screen.desktop-portrait {
   .introduction { margin-bottom: 10vh; }
-  .biographyContent { align-items: flex-start; }
 }
 
 @include screen.reduced-motion {

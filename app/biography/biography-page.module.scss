@@ -1,0 +1,18 @@
+@use '../../styles/tokens' as screen;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+.main {
+  flex: 1;
+  padding-top: var(--size-nav);
+}
+
+@include screen.tablet {
+  .main { margin-left: var(--size-nav); padding-top: 0; }
+}
