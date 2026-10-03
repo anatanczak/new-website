@@ -8,7 +8,7 @@
   @include tokens.motion;
 }
 
-:where(body:has([data-home-page], [data-biography-page], [data-portfolio-page])) {
+:where(body:has([data-home-page], [data-biography-page], [data-portfolio-page], [data-contact-page])) {
   margin: 0;
   font-family: var(--font-body-family);
   -webkit-font-smoothing: antialiased;

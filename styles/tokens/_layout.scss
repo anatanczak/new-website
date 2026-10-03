@@ -9,6 +9,7 @@
   --size-social-icon: 20px;
   --size-social-icon-mobile: 25px;
   --size-contact-icon: 30px;
+  --size-contact-social-icon: 40px;
   --size-link-arrow: 16px;
   --size-service-icon: 50px;
   --size-hobby-icon: 90px;
@@ -33,6 +34,7 @@
   --layer-carousel-controls: 3;
 
   @include screen.tablet {
+    --size-contact-social-icon: 50px;
     --size-service-icon: 60px;
     --size-hobby-icon: 110px;
     --size-language-bar: 8px;
@@ -41,6 +43,7 @@
   }
 
   @include screen.desktop {
+    --size-contact-social-icon: 60px;
     --size-service-icon: 90px;
     --size-language-bar: 9px;
     --size-quote-icon: 14px;

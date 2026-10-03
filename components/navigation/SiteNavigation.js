@@ -57,7 +57,7 @@ export default function SiteNavigation() {
 
   const portfolioPage = pathname === '/portfolio' || pathname?.startsWith('/portfolio/');
 
-  if (pathname !== '/' && pathname !== '/biography' && !portfolioPage) {
+  if (pathname !== '/' && pathname !== '/biography' && pathname !== '/contact' && !portfolioPage) {
     return (
       <header>
         <nav>
@@ -74,7 +74,7 @@ export default function SiteNavigation() {
     { label: content['navbar.aboutMe'], href: '/', current: pathname === '/' },
     { label: content['home.bio.title'], href: '/biography', current: pathname === '/biography' },
     { label: content['navbar.portfolio'], href: '/portfolio', current: portfolioPage },
-    { label: content['navbar.contact'], href: '#contact' }
+    { label: content['navbar.contact'], href: '/contact', current: pathname === '/contact' }
   ];
 
   return (

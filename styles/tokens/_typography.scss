@@ -11,6 +11,8 @@
   --font-h3: 400 14px var(--font-heading-family);
   --font-body: 400 12px var(--font-body-family);
   --font-pitch: 300 20px var(--font-body-family);
+  --font-contact-body: 300 20px var(--font-body-family);
+  --letter-spacing-contact: 2px;
   --font-button: 400 12px var(--font-heading-family);
   --font-skill: 700 12px var(--font-heading-family);
   --font-language: 700 16px var(--font-heading-family);
@@ -47,6 +49,7 @@
     --font-h3: 400 20px var(--font-heading-family);
     --font-body: 400 16px var(--font-body-family);
     --font-pitch: 300 30px var(--font-body-family);
+    --font-contact-body: var(--font-pitch);
     --font-language: 700 20px var(--font-heading-family);
     --font-portfolio-title: var(--font-h1);
     --font-quote: 300 19px var(--font-body-family);
