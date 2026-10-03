@@ -1,0 +1,160 @@
+@use '../../styles/tokens' as screen;
+
+.project {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.general {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--size-project-content-max);
+  align-items: center;
+  padding: var(--space-2) 15px;
+}
+.returnLink {
+  position: relative;
+  align-self: flex-start;
+  margin-top: 6px;
+  img { width: var(--size-return-icon); height: auto; }
+}
+.title { color: var(--color-text); margin: var(--space-2); font: var(--font-h1); text-align: center; }
+.subtitle, .links h2, .features > h2 {
+  color: var(--color-text);
+  text-align: center;
+  font: var(--font-h2);
+  margin: 0.5em;
+}
+.subtitle { margin-bottom: 0.3em; }
+.quote {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0.5em;
+  img { width: var(--size-quote-icon); height: auto; }
+  p { color: var(--color-text); text-align: center; font: var(--font-quote); }
+}
+.technologies {
+  display: flex;
+  margin: 0 0 var(--space-2);
+  padding: 0;
+  list-style: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  li {
+    border: 1px solid var(--color-mint);
+    border-radius: var(--radius-card);
+    padding: 0.1em 0.4em;
+    margin: var(--space-1);
+    font: var(--font-technology);
+    &:nth-child(2n) { border-color: var(--color-navy); }
+    &:nth-child(3n) { border-color: var(--color-lilac); }
+  }
+}
+.description {
+  color: var(--color-text);
+  font: var(--font-body);
+  p { margin-bottom: 1em; }
+}
+
+.links {
+  background: var(--color-surface-muted);
+  width: 100%;
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.linkList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li { display: flex; flex-direction: column; align-items: center; margin-bottom: var(--space-2); }
+}
+.linkNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent);
+  color: var(--color-text);
+  border-radius: 50%;
+  width: var(--size-link-number);
+  height: var(--size-link-number);
+  flex-shrink: 0;
+  font: var(--font-link-number);
+}
+.link { display: flex; align-items: center; color: var(--color-text); text-decoration: none; }
+.highlight {
+  margin-right: 0.1em;
+  > span { display: block; position: relative; z-index: 1; margin: 0.2em; font: var(--font-body); }
+}
+.arrowCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--color-accent);
+  width: var(--size-link-arrow);
+  height: var(--size-link-arrow);
+  border-radius: 50%;
+  img { width: 50%; margin-left: 0.1em; }
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100% - var(--space-5) * 2);
+  max-width: var(--size-project-features-max);
+  margin: var(--space-5);
+  > article:nth-child(2n + 1) { background: var(--color-navy); color: var(--color-text-inverse); }
+  > article:nth-child(3n + 1) { background: var(--color-grey); color: var(--color-text); }
+  > article:nth-child(4n + 1) { background: var(--color-lilac); color: var(--color-text); }
+}
+.feature {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--space-3);
+  margin-bottom: var(--space-5);
+  border-radius: var(--radius-card);
+  background: var(--color-mint);
+  color: var(--color-text);
+  h3 { text-transform: uppercase; margin-bottom: 0.5em; font: var(--font-h3); }
+  p { font: var(--font-body); }
+}
+
+@include screen.tablet {
+  .general { padding: var(--space-5); }
+  .title { margin: 0.5em; }
+  .technologies {
+    margin-bottom: var(--space-3);
+    li { border-width: 2px; padding: 0.2em 0.6em; }
+  }
+  .linkList li { flex-direction: row; }
+  .linkNumber { margin-right: var(--space-1); }
+  .highlight {
+    position: relative;
+    padding: 0.1em 0.3em;
+    &::after {
+      content: '';
+      position: absolute;
+      border-radius: var(--radius-highlight);
+      height: 40%;
+      top: 50%;
+      left: 0;
+      right: 0;
+      background: var(--color-accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--duration-menu) var(--ease-interface);
+    }
+  }
+  .link:hover .highlight::after, .link:focus-visible .highlight::after { transform: scaleX(1); }
+}
+
+@include screen.reduced-motion {
+  .highlight::after { transition: none; }
+}

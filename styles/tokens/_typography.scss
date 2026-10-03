@@ -15,6 +15,15 @@
   --font-skill: 700 12px var(--font-heading-family);
   --font-language: 700 16px var(--font-heading-family);
   --font-footer-body: 400 12px var(--font-body-family);
+  --font-portfolio-title: 700 30px var(--font-heading-family);
+  --font-card-overlay-title: 700 24px var(--font-heading-family);
+  --font-card-front-title: 700 18px var(--font-heading-family);
+  --font-card-body: 400 12px var(--font-body-family);
+  --font-button-regular: 400 16px var(--font-heading-family);
+  --font-filter: 400 16px var(--font-body-family);
+  --font-technology: 300 14px var(--font-body-family);
+  --font-quote: 400 14px var(--font-body-family);
+  --font-link-number: 700 16px var(--font-heading-family);
 
   @include screen.tablet {
     --font-h1: 700 30px var(--font-heading-family);
@@ -26,6 +35,10 @@
     --font-skill: 700 16px var(--font-heading-family);
     --font-language: 700 18px var(--font-heading-family);
     --font-footer-body: 400 14px var(--font-body-family);
+    --font-technology: 400 16px var(--font-body-family);
+    --font-quote: 400 16px var(--font-body-family);
+    --font-card-front-title: 700 24px var(--font-heading-family);
+    --font-card-body: 400 14px var(--font-body-family);
   }
 
   @include screen.desktop {
@@ -35,6 +48,9 @@
     --font-body: 400 16px var(--font-body-family);
     --font-pitch: 300 30px var(--font-body-family);
     --font-language: 700 20px var(--font-heading-family);
+    --font-portfolio-title: var(--font-h1);
+    --font-quote: 300 19px var(--font-body-family);
+    --font-link-number: 700 18px var(--font-heading-family);
   }
 
   @include screen.footer-wide {

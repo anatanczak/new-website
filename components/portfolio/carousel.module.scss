@@ -1,0 +1,66 @@
+@use '../../styles/tokens' as screen;
+
+.carousel {
+  width: 90%;
+  min-width: 0;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--space-3);
+}
+.arrow {
+  display: none;
+  position: absolute;
+  top: 50%;
+  z-index: var(--layer-carousel-controls);
+  padding: 2px 6px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  &:disabled { opacity: 0.3; cursor: default; }
+}
+.previous { left: var(--space-3); }
+.next { right: var(--space-3); }
+.viewport { width: 100%; overflow: hidden; touch-action: pan-y; }
+.track {
+  width: 100%;
+  display: flex;
+  transform: translateX(calc(-100% * var(--slide-index)));
+  transition: transform var(--duration-carousel) var(--ease-interface);
+}
+.slide {
+  flex-shrink: 0;
+  width: 100%;
+  padding: var(--space-2);
+  img { display: block; width: 100%; border-radius: var(--radius-card); }
+}
+.indicators { display: flex; }
+.indicator {
+  cursor: pointer;
+  background: var(--color-carousel-dot);
+  border-radius: 50%;
+  height: var(--size-carousel-dot);
+  width: var(--size-carousel-dot);
+  margin: 2px;
+  padding: 0;
+  border: 0;
+  &:hover, &[aria-current='true'] { background: var(--color-action); }
+}
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@include screen.tablet {
+  .arrow { display: block; }
+}
+
+@include screen.reduced-motion {
+  .track { transition: none; }
+}

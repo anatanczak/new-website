@@ -1,13 +1,10 @@
+import PortfolioListing from '../../components/portfolio/PortfolioListing';
+
 export const metadata = {
-  title: "Portfolio | Anastasia Website",
-  description: "Portfolio page"
+  title: 'Mon portfolio | Anastasia Tanczak',
+  description: 'Les projets web, iOS et UI/UX d’Anastasia Tanczak.'
 };
 
 export default function PortfolioPage() {
-  return (
-    <main>
-      <h1>Portfolio</h1>
-      <p>This is the portfolio page.</p>
-    </main>
-  );
+  return <PortfolioListing />;
 }

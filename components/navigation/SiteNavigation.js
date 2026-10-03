@@ -55,7 +55,9 @@ export default function SiteNavigation() {
     };
   }, [open]);
 
-  if (pathname !== '/' && pathname !== '/biography') {
+  const portfolioPage = pathname === '/portfolio' || pathname?.startsWith('/portfolio/');
+
+  if (pathname !== '/' && pathname !== '/biography' && !portfolioPage) {
     return (
       <header>
         <nav>
@@ -71,7 +73,7 @@ export default function SiteNavigation() {
   const items = [
     { label: content['navbar.aboutMe'], href: '/', current: pathname === '/' },
     { label: content['home.bio.title'], href: '/biography', current: pathname === '/biography' },
-    { label: content['navbar.portfolio'], href: '/portfolio' },
+    { label: content['navbar.portfolio'], href: '/portfolio', current: portfolioPage },
     { label: content['navbar.contact'], href: '#contact' }
   ];
 

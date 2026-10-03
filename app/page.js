@@ -3,6 +3,7 @@ import SkillsSection from '../components/home/SkillsSection';
 import LanguagesSection from '../components/home/LanguagesSection';
 import BiographySection from '../components/biography/BiographySection';
 import Footer from '../components/footer/Footer';
+import MailShortcut from '../components/contact/MailShortcut';
 import content from '../components/home/content.fr.json';
 import styles from './home.module.scss';
 
@@ -12,9 +13,9 @@ export const metadata = {
 };
 
 const services = [
-  { key: 'webDevelopment', icon: 'web_dev_icon.svg' },
-  { key: 'iosDevelopment', icon: 'ios_dev_icon.svg' },
-  { key: 'uiDesign', icon: 'ui_design_icon.svg' }
+  { key: 'webDevelopment', icon: 'web_dev_icon.svg', category: 'web' },
+  { key: 'iosDevelopment', icon: 'ios_dev_icon.svg', category: 'ios' },
+  { key: 'uiDesign', icon: 'ui_design_icon.svg', category: 'uiux' }
 ];
 
 const hobbies = [
@@ -57,7 +58,7 @@ export default function Page() {
                 <p>{content[`home.services.${service.key}.text`]}</p>
                 <Link
                   className={styles.projectLink}
-                  href="/portfolio"
+                  href={`/portfolio/${service.category}`}
                   aria-label={`${content['home.services.link']} — ${content[`home.services.${service.key}.title`]}`}
                 >
                   <span className={styles.linkHighlight}>
@@ -90,9 +91,7 @@ export default function Page() {
         </section>
       </main>
 
-      <a className={styles.mailShortcut} href="mailto:anatkachen@gmail.com" aria-label="Envoyer un e-mail à Anastasia">
-        <img src="/icons/mail_icon.svg" alt="" />
-      </a>
+      <MailShortcut />
       <Footer />
     </>
   );

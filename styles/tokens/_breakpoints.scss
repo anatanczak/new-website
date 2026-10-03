@@ -19,6 +19,10 @@ $tall-mobile: 650px;
   @media (min-width: $desktop) { @content; }
 }
 
+@mixin desktop-hover {
+  @media (min-width: $desktop) and (hover: hover) { @content; }
+}
+
 @mixin tablet-portrait {
   @media (min-width: $tablet) and (orientation: portrait) { @content; }
 }

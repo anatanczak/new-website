@@ -1,0 +1,77 @@
+@use '../../styles/tokens' as screen;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+.main { flex: 1; padding-top: var(--size-nav); }
+.listing { display: flex; flex-direction: column; align-items: center; }
+.title {
+  margin: var(--space-8) 0.5em var(--space-5);
+  font: var(--font-portfolio-title);
+  color: var(--color-text);
+}
+.categories { display: flex; flex-wrap: wrap; justify-content: center; }
+.category {
+  position: relative;
+  padding: 0.1em 0.3em;
+  margin: 0.5em;
+  color: var(--color-text);
+  text-decoration: none;
+  font: var(--font-filter);
+  span { position: relative; z-index: 1; }
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: var(--radius-highlight);
+    height: 40%;
+    top: 50%;
+    left: 0;
+    right: 0;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  &[aria-current='page']::after { transform: scaleX(1); }
+}
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  width: calc(100% - var(--space-5) * 2);
+  margin: 0 var(--space-5) var(--space-5);
+  gap: var(--space-5);
+}
+
+@include screen.tablet {
+  .main { margin-left: var(--size-nav); padding-top: 0; }
+  .title { margin: 0.5em; }
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(var(--size-portfolio-row), auto);
+    grid-auto-flow: dense;
+  }
+}
+
+@include screen.desktop {
+  .category::after { transition: transform var(--duration-menu) var(--ease-interface); }
+  .category:hover::after, .category:focus-visible::after { transform: scaleX(1); }
+}
+
+@include screen.desktop-hover {
+  .grid {
+    min-height: 80vh;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: minmax(var(--size-portfolio-desktop-row), auto);
+    > article:nth-child(2n) { grid-column: 2; grid-row-end: span 2; }
+    > article:nth-child(4n) { grid-column: 1; grid-row-end: span 2; }
+    > article:nth-child(5n) { grid-column: 2; }
+    > article:nth-child(6n) { grid-column: 3; grid-row-end: span 2; }
+  }
+}
+
+@include screen.reduced-motion {
+  .category::after { transition: none; }
+}

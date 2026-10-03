@@ -19,16 +19,31 @@
   --layer-navigation: 4;
   --layer-menu: 6;
   --layer-contact: 10;
+  --radius-card: var(--radius-button);
+  --size-portfolio-row: 150px;
+  --size-portfolio-desktop-row: 200px;
+  --size-project-card-min-height: 300px;
+  --size-project-thumbnail: 250px;
+  --size-project-content-max: 1400px;
+  --size-project-features-max: 1200px;
+  --size-return-icon: 30px;
+  --size-quote-icon: 10px;
+  --size-link-number: 25px;
+  --size-carousel-dot: 10px;
+  --layer-carousel-controls: 3;
 
   @include screen.tablet {
     --size-service-icon: 60px;
     --size-hobby-icon: 110px;
     --size-language-bar: 8px;
     --scale-skill: 1;
+    --size-quote-icon: 12px;
   }
 
   @include screen.desktop {
     --size-service-icon: 90px;
     --size-language-bar: 9px;
+    --size-quote-icon: 14px;
+    --size-link-number: 30px;
   }
 }
