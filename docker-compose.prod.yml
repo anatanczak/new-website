@@ -1,0 +1,20 @@
+# Production overrides, used together with docker-compose.yml:
+#   APP_VERSION=v1.2.0 docker compose -f docker-compose.yml -f docker-compose.prod.yml --env-file .env.prod up -d
+# The app image is built by CI and pulled from GHCR. Ports 80/443 belong to the
+# shared Caddy proxy (deploy/proxy), which reaches nginx over the `proxy` network.
+services:
+  app:
+    image: ghcr.io/anatanczak/new-website:${APP_VERSION:?set APP_VERSION to a release tag}
+    restart: unless-stopped
+
+  nginx:
+    restart: unless-stopped
+    ports: !reset []
+    networks:
+      - frontend
+      - backend
+      - proxy
+
+networks:
+  proxy:
+    external: true

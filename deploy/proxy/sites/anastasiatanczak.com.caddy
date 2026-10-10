@@ -1,0 +1,9 @@
+anastasiatanczak.com {
+	encode zstd gzip
+	header Strict-Transport-Security "max-age=31536000"
+	reverse_proxy anastasia-website-web:80
+}
+
+www.anastasiatanczak.com {
+	redir https://anastasiatanczak.com{uri} permanent
+}

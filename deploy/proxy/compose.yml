@@ -1,0 +1,29 @@
+# Shared reverse proxy for the whole VPS, installed at /srv/proxy.
+# Owns ports 80/443, obtains and renews Let's Encrypt certificates, and routes
+# each domain to an app container attached to the `proxy` network.
+#   docker compose up -d                        start / apply changes
+#   docker compose exec caddy caddy reload --config /etc/caddy/Caddyfile
+services:
+  caddy:
+    image: caddy:2-alpine
+    container_name: proxy-caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./sites:/etc/caddy/sites:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    name: proxy
+
+volumes:
+  caddy_data:
+  caddy_config:

@@ -1,0 +1,3 @@
+# HTTP is redirected to HTTPS automatically for every site below.
+# One file per site or app in sites/.
+import /etc/caddy/sites/*.caddy

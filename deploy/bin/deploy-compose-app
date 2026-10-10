@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Deploys a release of a Docker Compose app checked out in /srv/apps/<app>.
+#
+# Installed on the server as /usr/local/bin/deploy-compose-app and used as a
+# forced SSH command, so the CI key can do nothing else:
+#   command="/usr/local/bin/deploy-compose-app anastasia-website",restrict ssh-ed25519 AAAA...
+#
+# The release tag comes from SSH_ORIGINAL_COMMAND (CI) or the second argument
+# (manual rollback): deploy-compose-app anastasia-website v1.2.0
+set -euo pipefail
+
+APP="${1:-}"
+TAG="${SSH_ORIGINAL_COMMAND:-${2:-}}"
+
+fail() { echo "deploy-compose-app: $*" >&2; exit 1; }
+
+[[ "$APP" =~ ^[a-z0-9][a-z0-9-]*$ ]] || fail "invalid app name"
+[[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || fail "invalid tag '$TAG'"
+
+APP_DIR="/srv/apps/$APP"
+[[ -d "$APP_DIR/.git" ]] || fail "$APP_DIR is not a git checkout"
+cd "$APP_DIR"
+
+git fetch --quiet --force --tags origin
+git -c advice.detachedHead=false checkout --quiet "refs/tags/$TAG"
+
+export APP_VERSION="$TAG"
+compose() {
+  docker compose -f docker-compose.yml -f docker-compose.prod.yml --env-file .env.prod "$@"
+}
+compose pull app
+compose up -d --no-build --remove-orphans
+docker image prune -f >/dev/null
+
+echo "deploy-compose-app: $APP is now running $TAG"
